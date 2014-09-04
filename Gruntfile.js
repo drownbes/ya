@@ -86,7 +86,7 @@ module.exports = function (grunt) {
 		wiredep: {
 			options: {
 				dependencies: true,
-				devDependencies: true
+				devDependencies: true,
 			},
 			target: {
 				src: ['<%= config.app %>/{,*/}*.jade']
