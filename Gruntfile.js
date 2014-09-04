@@ -21,22 +21,16 @@ module.exports = function (grunt) {
 				tasks: ['wiredep']
 			},
 			js: {
-				files: ['<%= config.app %>/scripts/{,*/}*.js'],
-				tasks: ['jshint'],
-				options: {
-					livereload: true
-				}
+				files: ['<%= config.app %>/js/{,*/}*.js'],
+				tasks: ['jshint', 'copy:js'],
 			},
 			gruntfile: {
 				files: ['Gruntfile.js'],
 				tasks: ['jshint:gruntfile']
 			},
 			styles: {
-				files: ['<%= config.app %>/styles/{,*/}*.scss'],
-				tasks: ['sass'],
-				options: {
-					livereload: true
-				}
+				files: ['<%= config.app %>/css/{,*/}*.css'],
+				tasks: ['copy:css'],
 			},
 			jade: {
 				files: ['<%= config.app %>/{,*/}*.jade'],
@@ -61,7 +55,8 @@ module.exports = function (grunt) {
 			debug: {
 				options: {
 					base: [
-						'<%= config.dist %>'
+						'<%= config.dist %>',
+						'.'//TODO: copy deps to dist directory
                     ]
 				}
 			}
@@ -79,7 +74,38 @@ module.exports = function (grunt) {
 				src: 'Gruntfile.js'
 			},
 			src: {
-				src: ['<%= config.app %>/scripts/{,*/}*.js']
+				src: ['<%= config.app %>/js/{,*/}*.js']
+			}
+		},
+		copy: {
+            js: {
+                files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: '<%= config.app %>',
+                    dest: '<%= config.dist %>',
+                    src: [
+                        'js/{,*/}*.js',
+                        'css/{,*/}*.css',
+                    ]
+                }]
+            },
+			css: {
+				files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: '<%= config.app %>',
+                    dest: '<%= config.dist %>',
+                    src: [
+                        'css/{,*/}*.css',
+                    ]
+                }]
+			}
+        },
+
+		clean: {
+			src: {
+				src: ['<%= config.dist %>/*']
 			}
 		},
 
@@ -88,7 +114,7 @@ module.exports = function (grunt) {
 				dependencies: true,
 				devDependencies: true,
 			},
-			target: {
+			src: {
 				src: ['<%= config.app %>/{,*/}*.jade']
 			}
 		},
@@ -110,10 +136,23 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('debug', function () {
         grunt.task.run([
-            'jshint',
+            'newer:jshint',
+			'wiredep',
+			'newer:jade',
+			'newer:copy',
             'connect',
             'watch'
         ]);
     });
+
+	grunt.registerTask('build', function () {
+        grunt.task.run([
+            'newer:jshint',
+			'wiredep',
+			'newer:jade',
+			'newer:copy',
+        ]);
+    });
+
 
 };

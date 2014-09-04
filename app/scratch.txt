@@ -1,0 +1,92 @@
+		#cal1.clearfix
+			.clndr-grid
+				.days-of-the-week.clearfix
+					.header-day S
+					.header-day M
+					.header-day T
+					.header-day W
+					.header-day T
+					.header-day F
+					.header-day S
+				.days.clearfix
+					.day.past.adjacent-month.last-month.calendar-day-2014-08-31
+						span.day-number 31
+					.day.past.calendar-day-2014-09-01
+						span.day-number 1
+					.day.past.calendar-day-2014-09-02
+						span.day-number 2
+					.day.past.calendar-day-2014-09-03
+						span.day-number 3
+					.day.today.calendar-day-2014-09-04
+						span.day-number 4
+					.day.calendar-day-2014-09-05
+						span.day-number 5
+					.day.calendar-day-2014-09-06
+						span.day-number 6
+					.day.calendar-day-2014-09-07
+						span.day-number 7
+					.day.calendar-day-2014-09-08
+						span.day-number 8
+					.day.calendar-day-2014-09-09
+						span.day-number 9
+					.day.event.calendar-day-2014-09-10
+						span.day-number 10
+					.day.calendar-day-2014-09-11
+						span.day-number 11
+					.day.calendar-day-2014-09-12
+						span.day-number 12
+					.day.calendar-day-2014-09-13
+						span.day-number 13
+					.day.calendar-day-2014-09-14
+						span.day-number 14
+					.day.calendar-day-2014-09-15
+						span.day-number 15
+					.day.calendar-day-2014-09-16
+						span.day-number 16
+					.day.calendar-day-2014-09-17
+						span.day-number 17
+					.day.calendar-day-2014-09-18
+						span.day-number 18
+					.day.event.calendar-day-2014-09-19
+						span.day-number 19
+					.day.calendar-day-2014-09-20
+						span.day-number 20
+					.day.calendar-day-2014-09-21
+						span.day-number 21
+					.day.calendar-day-2014-09-22
+						span.day-number 22
+					.day.event.calendar-day-2014-09-23
+						span.day-number 23
+					.day.calendar-day-2014-09-24
+						span.day-number 24
+					.day.calendar-day-2014-09-25
+						span.day-number 25
+					.day.calendar-day-2014-09-26
+						span.day-number 26
+					.day.calendar-day-2014-09-27
+						span.day-number 27
+					.day.calendar-day-2014-09-28
+						span.day-number 28
+					.day.calendar-day-2014-09-29
+						span.day-number 29
+					.day.calendar-day-2014-09-30
+						span.day-number 30
+					.day.adjacent-month.next-month.calendar-day-2014-10-01
+						span.day-number 1
+					.day.adjacent-month.next-month.calendar-day-2014-10-02
+						span.day-number 2
+					.day.adjacent-month.next-month.calendar-day-2014-10-03
+						span.day-number 3
+					.day.adjacent-month.next-month.calendar-day-2014-10-04
+						span.day-number 4
+			.event-listing
+				.event-listing-title EVENTS THIS MONTH
+				.event-item
+					.event-item-name Persian Kitten Auction
+					.event-item-location Center for Beautiful Cats
+				.event-item
+					.event-item-name Cat Frisbee
+					.event-item-location Jefferson Park
+				.event-item
+					.event-item-name Kitten Demonstration
+					.event-item-location Center for Beautiful Cats

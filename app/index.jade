@@ -4,12 +4,34 @@ html
 		meta(charset="utf-8")
 		meta(name="viewport",content="width=device-width")
 		title Ya Zabil
+		//bower:css
+		//endbower
+		link(rel="stylesheet", href="styles/clndr.css")
 	body
-		#main_calendar
-		#footer
+
+		#container(ng-app='yazabil')
+			div(ng-controller='ctrl')
+				tien-clndr(tien-clndr-object='clndr')
+					.clndr-controls
+						.clndr-previous-button(ng-click='clndr.back()')
+						.month
+							| {{month}}
+						.clndr-next-button(ng-click='clndr.forward()')
+							.clndr-grid
+								.days-of-the-week
+								.header-day(ng-repeat='day in daysOfTheWeek track by $index')
+									| {{day}}
+								.days
+									div(class='{{day.classes}}', ng-repeat='day in days')
+										| {{day.day}}
+
 		//bower:js
 		script(src='../bower_components/jquery/dist/jquery.js')
 		script(src='../bower_components/moment/moment.js')
 		script(src='../bower_components/clndr/clndr.min.js')
+		script(src='../bower_components/underscore/underscore.js')
+		script(src='../bower_components/angular/angular.js')
+		script(src='../bower_components/angular-clndr/tien-clndr.js')
 		//endbower
+		script(src='js/app.js')
 
