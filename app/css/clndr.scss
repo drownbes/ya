@@ -1,0 +1,102 @@
+@import 'mixins';
+
+$clndr-width:560;
+$clndr-height:320;
+$clndr-one4:percentage(1/4);
+$clndr-one7:percentage(1/7);
+
+
+.clndr {
+	background-color:#6699CC;
+
+	@media only screen and (max-device-width: 240px) {
+		width:200px;
+		height:200px;
+	}
+
+	@media only screen and (max-device-width: 320px) and (orientation: landscape) {
+		width:310px;
+	}
+
+	width:$clndr-width + px;
+	height:$clndr-height + px;
+	.clndr-controlls {
+		@include clearfix();
+		height:10%;
+		width:100%;
+		.month {
+			float:left;
+			width:$clndr-one4;
+			text-align: center;
+			vertical-align: middle;
+		}
+		.year {
+			float:left;
+			width:$clndr-one4;
+			text-align: center;
+			vertical-align: middle;
+		}
+		.clndr-previous-button {
+			float:left;
+			width:$clndr-one4;
+			text-align: center;
+			vertical-align: middle;
+		}
+		.clndr-next-button {
+			float:left;
+			width:$clndr-one4;
+			text-align: center;
+			vertical-align: middle;
+		}
+	}
+
+	.clndr-grid {
+		@include clearfix();
+		height:90%;
+		width:100%;
+		.days-of-the-week {
+			@include clearfix();
+			height:100%;
+			width:100%;
+			.days-header {
+				@include clearfix();
+				height:100 / 7 * 1%;
+				width:100%;
+				background-color:#669999;
+				.header-day {
+					float:left;
+					width: $clndr-one7;
+					height:100%;
+					display:table;
+					text-align: center;
+					div {
+						display:table-cell;
+						vertical-align: middle;
+					}
+				}
+			}
+			.days {
+				width:100%;
+				@include clearfix();
+				height:100% - 100 / 7 * 1%;
+				.day {
+					float:left;
+					width: $clndr-one7;
+					height: 100 / 6 * 1%;
+					display:table;
+					text-align:center;
+					div {
+						display:table-cell;
+						vertical-align: middle;
+					}
+
+				}
+				.adjacent-month {
+					color:green;
+				}
+			}
+		}
+	}
+
+
+}

@@ -1,8 +1,19 @@
-(function() {
+var mod = (function() {
 	'use strict';
-	var App = angular.module('yazabil', ['yazabil.controllers', 'tien.clndr']);
-	angular.module('yazabil.controllers',[]).controller('ctrl',['$scope','$http', function($scope, $http) {
-		console.log("sas ");
-	}]);
+	moment.locale('ru');
+	var tmpl = $('#clndr-template').html(),
+	c_tmpl = _.template(tmpl);
 
+	var mC = $('#container').clndr({
+		showAdjacentMonths: true,
+		render: function(data) {
+			return c_tmpl(data);
+		},
+		clickEvents: {
+			click: function(target) {
+				console.log(target.date);
+		   	}
+		}
+	});
+	return mC;
 })();

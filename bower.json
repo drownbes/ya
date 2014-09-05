@@ -23,6 +23,9 @@
   "overrides": {
 	  "angular-clndr": {
 		  "main": "tien-clndr.js"
+	  },
+	  "moment": {
+		  "main": "min/moment-with-locales.js"
 	  }
   }
 }

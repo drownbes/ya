@@ -29,8 +29,8 @@ module.exports = function (grunt) {
 				tasks: ['jshint:gruntfile']
 			},
 			styles: {
-				files: ['<%= config.app %>/css/{,*/}*.css'],
-				tasks: ['copy:css'],
+				files: ['<%= config.app %>/css/{,*/}*.scss'],
+				tasks: ['sass'],
 			},
 			jade: {
 				files: ['<%= config.app %>/{,*/}*.jade'],
@@ -41,7 +41,7 @@ module.exports = function (grunt) {
 					livereload: '<%= connect.options.livereload %>'
 				},
 				files: [
-					'<%= config.app %>/*'
+					'<%= config.app %>/**'
 				]
 			}
 		},
@@ -86,22 +86,10 @@ module.exports = function (grunt) {
                     dest: '<%= config.dist %>',
                     src: [
                         'js/{,*/}*.js',
-                        'css/{,*/}*.css',
                     ]
                 }]
-            },
-			css: {
-				files: [{
-                    expand: true,
-                    dot: true,
-                    cwd: '<%= config.app %>',
-                    dest: '<%= config.dist %>',
-                    src: [
-                        'css/{,*/}*.css',
-                    ]
-                }]
-			}
-        },
+            }
+		},
 
 		clean: {
 			src: {
@@ -131,7 +119,21 @@ module.exports = function (grunt) {
 				ext: '.html',   // Dest filepaths will have this extension.
 				extDot: 'first'
 			}
+		},
+		sass : {
+			options: {
+			},
+			src: {
+				expand: true,     // Enable dynamic expansion.
+				cwd: '<%= config.app %>',      // Src matches are relative to this path.
+				src: ['css/{,*/}*.scss'],
+				dest: '<%= config.dist %>/',   // Destination path prefix.
+				ext: '.css',   // Dest filepaths will have this extension.
+				extDot: 'first'
+			}
 		}
+
+
 	});
 
 	grunt.registerTask('debug', function () {
@@ -139,7 +141,8 @@ module.exports = function (grunt) {
             'newer:jshint',
 			'wiredep',
 			'newer:jade',
-			'newer:copy',
+			'newer:sass',
+			'newer:copy:js',
             'connect',
             'watch'
         ]);
@@ -150,7 +153,8 @@ module.exports = function (grunt) {
             'newer:jshint',
 			'wiredep',
 			'newer:jade',
-			'newer:copy',
+			'newer:sass',
+			'newer:copy:js',
         ]);
     });
 

@@ -6,28 +6,34 @@ html
 		title Ya Zabil
 		//bower:css
 		//endbower
-		link(rel="stylesheet", href="styles/clndr.css")
+		link(rel="stylesheet", href="css/clndr.css")
+		script(id="clndr-template", type="text/template")
+			.clndr-controlls
+				.clndr-previous-button
+					| prev
+				.month!='<%= month %>'
+				.year!='<%= year %>'
+				.clndr-next-button
+					| next
+			.clndr-grid
+				.days-of-the-week
+					.days-header
+						!='<% _.each(daysOfTheWeek, function(day) { %>'
+						.header-day
+							div
+								!='<%= day %>'
+						!='<% }); %>'
+					.days
+						!='<% _.each(days, function(day) { %>'
+						div(class!="<%= day.classes %>")
+							div
+								!='<%= day.day %>'
+						!='<% }); %>'
 	body
-
-		#container(ng-app='yazabil')
-			div(ng-controller='ctrl')
-				tien-clndr(tien-clndr-object='clndr')
-					.clndr-controls
-						.clndr-previous-button(ng-click='clndr.back()')
-						.month
-							| {{month}}
-						.clndr-next-button(ng-click='clndr.forward()')
-							.clndr-grid
-								.days-of-the-week
-								.header-day(ng-repeat='day in daysOfTheWeek track by $index')
-									| {{day}}
-								.days
-									div(class='{{day.classes}}', ng-repeat='day in days')
-										| {{day.day}}
-
+		#container
 		//bower:js
 		script(src='../bower_components/jquery/dist/jquery.js')
-		script(src='../bower_components/moment/moment.js')
+		script(src='../bower_components/moment/min/moment-with-locales.js')
 		script(src='../bower_components/clndr/clndr.min.js')
 		script(src='../bower_components/underscore/underscore.js')
 		script(src='../bower_components/angular/angular.js')
