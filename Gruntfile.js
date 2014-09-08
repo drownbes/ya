@@ -93,7 +93,7 @@ module.exports = function (grunt) {
 
 		clean: {
 			src: {
-				src: ['<%= config.dist %>/*']
+				src: ['<%= config.dist %>/*', '<%= config.dist %>/../.sass-cache']
 			}
 		},
 
